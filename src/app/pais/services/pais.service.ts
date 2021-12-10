@@ -13,7 +13,7 @@ export class PaisService {
 
     paises : any = null;    //lo declaro any porque va a recibir objetos que realmente no sé de qué tipo son
 
-    constructor(private HttpClient : HttpClient) { }
+    constructor(private HttpClient : HttpClient) { }        //inyección de dependencias
 
     //recibe la palabra escrita en el input
     //realiza la peticion a la url

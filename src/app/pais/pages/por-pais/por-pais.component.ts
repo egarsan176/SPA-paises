@@ -8,15 +8,22 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorPaisComponent implements OnInit {
 
+  //guardo la variable del ngModel
+  paisABuscar: string = "";
+
   constructor(private PaisService: PaisService) { }
 
   ngOnInit(): void {
   }
 
+  //propiedad computada
   //devuelvo la lista de paises del servicio para poder recorrela en el for del componente y mostrar sus propiedades
   get paises(){
     return this.PaisService.paises;
   }
 
+  conseguirPais(){
+    this.PaisService.buscarPais(this.paisABuscar);
+  }
 
 }
