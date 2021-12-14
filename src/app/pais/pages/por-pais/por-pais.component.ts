@@ -12,6 +12,7 @@ export class PorPaisComponent implements OnInit {
   //guardo la variable del ngModel
   paisABuscar: string = "";
   paises: Pais[] = [];
+  isError: boolean = false;
 
   constructor(private PaisService: PaisService) { }
 
@@ -26,14 +27,21 @@ export class PorPaisComponent implements OnInit {
 
   conseguirPais(paisABuscar: string){
     this.paisABuscar = paisABuscar;
+    this.isError = false;
 
     this.PaisService.buscarPais(this.paisABuscar)
-    .subscribe(resp =>{
-      this.paises = resp;
-      console.log(this.paises);
+    .subscribe({
+      next: resp =>{
+        this.paises = resp;
+        console.log(this.paises);
+    },
+    error: e =>{
+      this.isError = true;
+      this.paises = [];
+    }
     })
+
   }
 
+
 }
-
-

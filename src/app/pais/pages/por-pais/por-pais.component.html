@@ -10,6 +10,14 @@
     </div>
 </div>
 
+<div class="col" *ngIf="paises.length <= 0 && !isError">
+    <h2>No has realizado ninguna búsqueda...</h2>
+</div>
+
+<div class="alert alert-danger" *ngIf="isError">
+    No se encontró nada con el término {{paisABuscar}}
+</div>
+
 <div class="row">
     <div class="col">
 
