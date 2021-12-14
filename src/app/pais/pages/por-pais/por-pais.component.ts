@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
+import { Pais } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
@@ -10,6 +11,7 @@ export class PorPaisComponent implements OnInit {
 
   //guardo la variable del ngModel
   paisABuscar: string = "";
+  paises: Pais[] = [];
 
   constructor(private PaisService: PaisService) { }
 
@@ -18,12 +20,20 @@ export class PorPaisComponent implements OnInit {
 
   //propiedad computada
   //devuelvo la lista de paises del servicio para poder recorrela en el for del componente y mostrar sus propiedades
-  get paises(){
-    return this.PaisService.paises;
-  }
+  // get paises(){
+  //   return this.PaisService.paises;
+  // }
 
-  conseguirPais(){
-    this.PaisService.buscarPais(this.paisABuscar);
+  conseguirPais(paisABuscar: string){
+    this.paisABuscar = paisABuscar;
+
+    this.PaisService.buscarPais(this.paisABuscar)
+    .subscribe(resp =>{
+      this.paises = resp;
+      console.log(this.paises);
+    })
   }
 
 }
+
+

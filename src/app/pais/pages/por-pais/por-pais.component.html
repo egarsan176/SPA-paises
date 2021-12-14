@@ -5,43 +5,22 @@
 
     <div class="col">
 
-            <input type="text" 
-            class="form-control" 
-            name="paisABuscar" 
-            placeholder="Buscar país ..." 
-            [(ngModel)]="paisABuscar" 
-            (keyup.enter)="conseguirPais()">
+        <app-input-pais (onEnter)="conseguirPais($event)"></app-input-pais>
     
     </div>
 </div>
 
 <div class="row">
     <div class="col">
+
+        <!-- 
+        countries es la propiedad del componente tabla 
+        paises es la propiedad de pais 
+        estoy vinculando la propiedad de un componente con otro componente
+        country es un @input es decir, que voy a recibir datos      
+     -->
         
-        <table class="table table-hover" *ngIf="paises.length>0">  <!--  ngIf para que no aparezca la cabecera de la tabla si no hay ninguna búsqueda -->
-            <thead>
-                <tr>
-                    <th> # </th>
-                    <th> Bandera </th>
-                    <th> Nombre </th>
-                    <th> Población </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let pais of paises; let indice=index"> <!-- Esto es lo que tenemos que repetir por cada país que encuentre -->
-                    <td> {{indice}}</td> <!-- Aquí obtendremos el número de resultado -->
-                    <td>
-                        <img class="small-flag" [src]="pais.flags.svg" > <!-- Aquí obtendremos la url de la bandera de la api --> 
-                    </td>
-                    <td> {{pais.capital}}, {{pais.name.common}}</td> <!-- La capital, el nombre del país y la población lo obtendremos de la api -->
-                    <td> {{pais.population}}</td>
-                    <td>
-                        <a >Ver...</a> <!-- Esto lo dejamos así de momento -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+       <app-pais-tabla [countries]="paises"></app-pais-tabla>
 
     </div>
 </div>

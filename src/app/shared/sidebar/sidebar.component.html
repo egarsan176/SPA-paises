@@ -2,7 +2,7 @@
 <h2>Búsquedas</h2>
 <hr>
 <ul class="list-group">
-    <li class="list-group-item" routerLink="" routerLinkActive="active">Buscar País</li>
+    <li class="list-group-item" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Buscar País</li>
     <li class="list-group-item" routerLink="/region" routerLinkActive="active">Por Región</li>
     <li class="list-group-item" routerLink="/capital" routerLinkActive="active">Por Capital</li>
 </ul>
@@ -12,5 +12,8 @@ en routerLink (que espera un string) vinculamos el href al que queremos dirigir 
 routerLink = "/ruta" 👉 absolute path 👉 no depende de la URL en la que nos encontremos
 routerLink = "ruta" 👉 relative path 👉 depende de la URL en la que nos encontremos
 
-routerLinkActive nos permite aplicar una clase dinámicamente, dependiendo de si un enlace determinado tiene su ruta activa
+routerLinkActive nos permite aplicar una clase css dinámicamente, dependiendo de si un enlace determinado tiene su ruta activa. 
+Indicamos que clase css se carga cuando ese sea el enlace activo
+
+routerLink = "" coincide con todas al estar vacío y por eso siempre aparece coloreado, por ello necesito el routerLinkActiveOptions
 -->

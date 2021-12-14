@@ -16,9 +16,6 @@ import { PaisService } from '../pais/services/pais.service';
   ],
   exports: [
     SidebarComponent
-  ],
-  providers:[
-    PaisService
   ]
 })
 export class SharedModule { }

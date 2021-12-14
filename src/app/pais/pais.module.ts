@@ -6,6 +6,8 @@ import { PorRegionComponent } from './pages/por-region/por-region.component';
 import { VerPaisComponent } from './pages/ver-pais/ver-pais.component';
 import { FormsModule } from '@angular/forms';
 import { PaisService } from './services/pais.service';
+import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component';
+import { InputPaisComponent } from './components/input-pais/input-pais.component';
 
 
 
@@ -14,7 +16,9 @@ import { PaisService } from './services/pais.service';
     PorCapitalComponent,
     PorPaisComponent,
     PorRegionComponent,
-    VerPaisComponent
+    VerPaisComponent,
+    PaisTablaComponent,
+    InputPaisComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +26,13 @@ import { PaisService } from './services/pais.service';
   ],
   providers: [
     PaisService //para poder usar el servicio en todos los componentes de este modulo
+  ],
+  exports: [
+    PorPaisComponent,
+    PorRegionComponent,
+    PorCapitalComponent,
+    VerPaisComponent,
+    InputPaisComponent
   ]
 })
 export class PaisModule { }
