@@ -30,15 +30,21 @@ export class PaisService {
         //     this.paises = resp;
         // })
 
-       
-
+    
     }
-
-
-    buscarRegion(){}
+    
+    buscarRegion(query:string): Observable<Pais[]>{
+        let url: string = `${this.urlBase}/region/${query}` //devuelve un observable
+        return this.HttpClient.get<Pais[]>(url)
+    }
 
     buscarCapital(query: string): Observable<Pais[]>{
         let url: string = `${this.urlBase}/capital/${query}` //devuelve un observable
         return this.HttpClient.get<Pais[]>(url)
+    }
+
+    verPais(id: string): Observable<Pais[]>{
+        let url: string = `${this.urlBase}/alpha/${id}` 
+        return this.HttpClient.get<Pais[]>(url);
     }
 }

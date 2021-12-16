@@ -1,3 +1,28 @@
 <h2>Por Región</h2>
 <hr>
 
+<div class="row">
+    <div class="col">
+        <!-- con el placeholder muestro texto en el campo del input -->
+        <app-input-pais (onEnter)="buscarRegion($event)" placeholder="Buscar Región..."></app-input-pais>
+        
+    </div>
+</div>
+
+<!-- se muestra al cargar la página cuando aún no se ha hecho ninguna búsqueda -->
+<div class="col" *ngIf="regiones.length <= 0 && !isError">
+    <h2>No has realizado ninguna búsqueda...</h2>
+</div>
+
+<!-- si la variable isError es true se muestra el if -->
+<div class="alert alert-danger" *ngIf="isError">
+    No se encontró nada con el término {{region}}
+</div>
+
+<div class="row">
+    <div class="col">
+        
+       <app-pais-tabla [countries]="regiones"></app-pais-tabla>
+
+    </div>
+</div>

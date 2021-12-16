@@ -1,6 +1,12 @@
 <input type="text" 
 class="form-control" 
 name="paisABuscar" 
-placeholder="Buscar País..."
+[placeholder]="placeholder" 
 [(ngModel)]="paisABuscar" 
 (keyup.enter)="conseguirPais()">
+
+<!-- 
+    [placeholder] para recoger el placeholder propio del país y de la capital 
+    en por-capital y por-pais
+
+-->

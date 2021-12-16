@@ -3,21 +3,26 @@
 
 <div class="row">
     <div class="col">
-       
-        <input type="text" 
-        class="form-control" 
-        name="capital" 
-        placeholder="Buscar Capital..."
-        [(ngModel)]="capital" 
-        (keyup.enter)="buscarCapital(capital)">
+        <!-- con el placeholder muestro texto en el campo del input -->
+        <app-input-pais (onEnter)="buscarCapital($event)" placeholder="Buscar Capital..."></app-input-pais>
         
     </div>
+</div>
+
+<!-- se muestra al cargar la página cuando aún no se ha hecho ninguna búsqueda -->
+<div class="col" *ngIf="capital.length <= 0 && !isError">
+    <h2>No has realizado ninguna búsqueda...</h2>
+</div>
+
+<!-- si la variable isError es true se muestra el if -->
+<div class="alert alert-danger" *ngIf="isError">
+    No se encontró nada con el término {{capital}}
 </div>
 
 <div class="row">
     <div class="col">
         
-       <app-pais-tabla [countries]="paises"></app-pais-tabla>
+       <app-pais-tabla [countries]="capitales"></app-pais-tabla>
 
     </div>
 </div>
